@@ -1,0 +1,30 @@
+.header_top{
+    background-color: rgb(2,41,64);
+    height: 90px;
+    width: 100%;
+}
+.header_bottom{
+    background-color: rgb(28,120,182);
+    height: 55px;
+    width: 100%;
+}
+.header_top_content_left{
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+.header_top_content_center{
+    color: azure;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header_top_content_right{
+    position: absolute;
+    right: 0;
+}
+.center_element{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
