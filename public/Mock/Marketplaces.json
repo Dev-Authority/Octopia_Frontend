@@ -6,7 +6,9 @@
             "Logo":"https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pj&oid=00D58000000dZI5&lastMod=1654156718000",
             "Link":"https://www.worten.pt/",
             "Description":"Worten Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-            "Features":["8 millions de visites", "Primée \"marque de confiance\" pour la 9ème année consécutive", "Pays : Portugal et Espagne"]
+            "Features":["8 millions de visites", "Primée \"marque de confiance\" pour la 9ème année consécutive", "Pays : Portugal et Espagne"],
+            "status":"Pending",
+            "isFavorite": true
         },
         {
             "Name":"Casino.fr",
@@ -14,7 +16,9 @@
             "Logo":"https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pA&oid=00D58000000dZI5&lastMod=1654156373000",
             "Link":"https://www.casino.fr/",
             "Description":"Casino.fr Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-            "Features":["Près de 500 000 visiteurs par mois", "Récurrence d'achat élevée avec un positionnement prix compétitif", "Pays : France"]
+            "Features":["Près de 500 000 visiteurs par mois", "Récurrence d'achat élevée avec un positionnement prix compétitif", "Pays : France"],
+            "status":"Rejected",
+            "isFavorite": false
         },
         {
             "Name":"CDON",
@@ -22,7 +26,9 @@
             "Logo":"https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pF&oid=00D58000000dZI5&lastMod=1654156427000",
             "Link":"https://cdon.se/",
             "Description":"CDON Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-            "Features":["Plus de 2 millions de clients", "Leader dans les pays nordiques", "Pays : Suède"]
+            "Features":["Plus de 2 millions de clients", "Leader dans les pays nordiques", "Pays : Suède"],
+            "status":"Accepted",
+            "isFavorite": true
         },
         {
             "Name":"Europazon.fr",
@@ -30,7 +36,9 @@
             "Logo":"https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pK&oid=00D58000000dZI5&lastMod=1654156465000",
             "Link":"https://europazon.fr/bienvenue/",
             "Description":"Europazon.fr Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-            "Features":["Produits made in France et Europe", "Abonnement gratuit", "Pays : France"]
+            "Features":["Produits made in France et Europe", "Abonnement gratuit", "Pays : France"],
+            "status":"Accepted",
+            "isFavorite": false
         },
         {
             "Name":"MarjaneMall.ma",
@@ -38,7 +46,9 @@
             "Logo":"https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pP&oid=00D58000000dZI5&lastMod=1654156640000",
             "Link":"https://www.marjanemall.ma/",
             "Description":"MarjaneMall.ma Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-            "Features":["Leader e-commerce au Maroc", "Marché en très forte croissance", "Pays : Maroc"]
+            "Features":["Leader e-commerce au Maroc", "Marché en très forte croissance", "Pays : Maroc"],
+            "status":"Accepted",
+            "isFavorite": true
         },
         {
             "Name":"Carethy",
@@ -46,7 +56,9 @@
             "Logo":"https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pU&oid=00D58000000dZI5&lastMod=1654156335000",
             "Link":"https://www.carethy.net/",
             "Description":"Carethy Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-            "Features":["Entre 3 et 5 millions de visites mensuelles", "Présence dans plus de 16 pays", "Pays : France"]
+            "Features":["Entre 3 et 5 millions de visites mensuelles", "Présence dans plus de 16 pays", "Pays : France"],
+            "status":"Pending",
+            "isFavorite": false
         },
         {
             "Name":"Rakuten",
@@ -54,7 +66,9 @@
             "Logo":"https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pe&oid=00D58000000dZI5&lastMod=1654156677000",
             "Link":"https://www.rakuten.com/",
             "Description":"Rakuten Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-            "Features":["Plateforme omnicanale (mise en place simple et rapide du click and collect)", "Accompagnement gratuit et dédié", "Pays : monde"]
+            "Features":["Plateforme omnicanale (mise en place simple et rapide du click and collect)", "Accompagnement gratuit et dédié", "Pays : monde"],
+            "status":"none",
+            "isFavorite": true
         }
     ]
 }

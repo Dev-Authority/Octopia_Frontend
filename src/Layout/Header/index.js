@@ -1,5 +1,6 @@
-import {React, useState} from 'react'
-import "./style.css"
+import { React, useState } from 'react';
+import { Link } from "react-router-dom";
+import "./style.css";
 import { Navbar, NavbarText } from 'reactstrap';
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Badge from "@mui/material/Badge";
@@ -22,17 +23,20 @@ const Header = () => {
 
   return (
     <>
-    
+
       <Navbar className="header_top">
         <div className="header_top_content_left">
-          <img
-            alt="logo"
-            src={Octopia}
-            style={{
-              height: 50,
-              width: 180,
-            }}
-          />
+          <Link to={"/"}>
+            <img
+              alt="logo"
+              src={Octopia}
+              style={{
+                height: 40,
+                width: 140,
+                marginLeft: "30px",
+              }}
+            />
+          </Link>
         </div>
         <div className="header_top_content_center hidden md:flex">
           <NavbarText >
@@ -113,10 +117,12 @@ const Header = () => {
           <li>Seller Performance</li>
           <li>Messages</li>
           <li>Marketing</li>
-          <li>Marketplaces</li>
+          <Link to={"/marketplace"}>
+            <li>Marketplaces</li>
+          </Link>
         </ul>
 
-        <MenuItems showMenu={showMenu} active={active}/>
+        <MenuItems showMenu={showMenu} active={active} />
 
       </Navbar>
 

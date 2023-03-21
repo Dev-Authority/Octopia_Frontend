@@ -3,29 +3,56 @@ import { React, useEffect, useState } from 'react'
 import axios from 'axios'
 import CvDetailsModal from './CvDetailsModal';
 
-const CvCard = () => {
+const CvCard = (props) => {
 
     const [error, setError] = useState();
     const [marketplaces, setMarketplaces] = useState([]);
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [CVIndex, setCVIndex] = useState();
 
-    const getMarketPlacesData = () => {
-        axios.get("/Mock/Marketplaces.json")
-            .then((res) => setMarketplaces(res.data.Marketplaces))
-            .catch((err) => setError(err.message));
-    }
+    var canauxVente = [];
+    var canauxVenteFilter = [];
+
+    // const getMarketPlacesData = () => {
+    //     axios.get("/Mock/Marketplaces.json")
+    //         .then((res) => setMarketplaces(res.data.Marketplaces))
+    //         .catch((err) => setError(err.message));
+    // }
 
     const handleOnClose = () => {
         setShowDetailModal(false);
     }
 
+    const getMarketPlacesDataByStatus = () => {
+        axios.get("/Mock/Marketplaces.json").then((res) =>{
+            canauxVente = res.data.Marketplaces;
+            if (props.tag === "All Marketplaces"){
+                setMarketplaces(res.data.Marketplaces);
+            }else{
+                canauxVente?.map(marketplace => {
+                    if(marketplace.status === props.tag){
+                        canauxVenteFilter=[...canauxVenteFilter, marketplace];
+                    }
+                })
+                setMarketplaces(canauxVenteFilter)  
+            }
+            if(props.tag === "Favorites"){
+                canauxVenteFilter = [];
+                canauxVente?.map(marketplace => {
+                    console.log(marketplace.isFavorite === true);
+                    if(marketplace.isFavorite === true){
+                        canauxVenteFilter=[...canauxVenteFilter, marketplace];
+                    }
+                })
+                setMarketplaces(canauxVenteFilter) 
+            }
+        }).catch((err) => setError(err.message));
+    }
 
     useEffect(() => {
-        getMarketPlacesData();
+        getMarketPlacesDataByStatus();
     }, []);
 
-    // console.log(error)
 
     return (
         <>
@@ -36,7 +63,7 @@ const CvCard = () => {
                             <div className='w-96 h-fit p-2 m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
                                 <div className='h-40' onClick={() => {
                                     setShowDetailModal(true);
-                                        setCVIndex(index);
+                                    setCVIndex(marketplace.Name);
                                 }}>
                                     <img className='w-96 p-4 align-middle object-cover rounded-xl' alt="logo" src={marketplace.Logo} />
                                 </div>
