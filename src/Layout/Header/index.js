@@ -38,9 +38,10 @@ const Header = () => {
             />
           </Link>
         </div>
-        <div className="header_top_content_center hidden md:flex">
+        <div className="header_top_content_center hidden md:flex text-center">
           <NavbarText >
-            Bienvenue dans votre espace vendeur
+            <p>Bienvenue dans votre espace vendeur</p>
+            <p className='font-semibold'>Mehdi IJIKKI (123)</p>
           </NavbarText>
         </div>
         <div className="header_top_content_right hidden sm:flex">

@@ -1,10 +1,12 @@
 import { React, useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import LoadingRing from '../LoadingRing';
 
 const CvDetailsModal = ({ visible, onClose, marketIndex }) => {
     const [error, setError] = useState();
     const [marketplaces, setMarketplaces] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const handleOnClose = () => {
@@ -13,8 +15,14 @@ const CvDetailsModal = ({ visible, onClose, marketIndex }) => {
 
     const getMarketPlacesData = () => {
         axios.get("/Mock/Marketplaces.json")
-            .then((res) => setMarketplaces(res.data.Marketplaces))
-            .catch((err) => setError(err.message));
+            .then((res) => {
+                setMarketplaces(res.data);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                setError(err.message);
+                setIsLoading(false);
+            });
     }
 
 
@@ -29,6 +37,7 @@ const CvDetailsModal = ({ visible, onClose, marketIndex }) => {
     return (
         <>
             {
+                (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
                 marketplaces?.map((marketplace, index) => {
                     if (marketplace.Name === marketIndex) {
                         return (
@@ -48,10 +57,10 @@ const CvDetailsModal = ({ visible, onClose, marketIndex }) => {
                                         </div>
 
                                         <div className="p-6 space-y-6">
-                                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            <p className="text-base leading-relaxed text-gray-700 dark:text-gray-400">
                                                 {marketplace.Description}
                                             </p>
-                                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            <p className="text-base leading-relaxed text-gray-700 dark:text-gray-400">
                                                 {marketplace.Description}
                                             </p>
                                         </div>

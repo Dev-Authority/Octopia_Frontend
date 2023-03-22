@@ -1,5 +1,4 @@
 import React from 'react';
-import CvCard from '../../Components/CvCard';
 import MaterialTabs from '../../Components/MaterialTabs';
 import Header from '../../Layout/Header';
 

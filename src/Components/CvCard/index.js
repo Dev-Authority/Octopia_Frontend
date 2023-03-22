@@ -1,14 +1,24 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useState, useRef } from 'react';
 // import { apiURL } from '../../Assets/util/api'
-import axios from 'axios'
+import axios from 'axios';
 import CvDetailsModal from './CvDetailsModal';
+import LoadingRing from '../LoadingRing';
+import LoadingCard from '../LoadingCard';
+import clsx from 'clsx';
+import useLazyLoad from '../../Hooks/useLazyLoad';
 
 const CvCard = (props) => {
 
     const [error, setError] = useState();
     const [marketplaces, setMarketplaces] = useState([]);
     const [showDetailModal, setShowDetailModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [CVIndex, setCVIndex] = useState();
+
+    const NUMBER_PER_PAGE = 7;
+    const TOTAL_PAGES = 3;
+
+
 
     var canauxVente = [];
     var canauxVenteFilter = [];
@@ -24,65 +34,93 @@ const CvCard = (props) => {
     }
 
     const getMarketPlacesDataByStatus = () => {
-        axios.get("/Mock/Marketplaces.json").then((res) =>{
+        axios.get("/Mock/Marketplaces.json").then((res) => {
             canauxVente = res.data.Marketplaces;
-            if (props.tag === "All Marketplaces"){
+            if (props.tag === "All Marketplaces") {
                 setMarketplaces(res.data.Marketplaces);
-            }else{
+                setIsLoading(false);
+            } else {
                 canauxVente?.map(marketplace => {
-                    if(marketplace.status === props.tag){
-                        canauxVenteFilter=[...canauxVenteFilter, marketplace];
+                    if (marketplace.status === props.tag) {
+                        canauxVenteFilter = [...canauxVenteFilter, marketplace];
                     }
                 })
-                setMarketplaces(canauxVenteFilter)  
+                setMarketplaces(canauxVenteFilter);
+                setIsLoading(false);
             }
-            if(props.tag === "Favorites"){
+            if (props.tag === "Favorites") {
                 canauxVenteFilter = [];
                 canauxVente?.map(marketplace => {
-                    console.log(marketplace.isFavorite === true);
-                    if(marketplace.isFavorite === true){
-                        canauxVenteFilter=[...canauxVenteFilter, marketplace];
+                    if (marketplace.isFavorite === true) {
+                        canauxVenteFilter = [...canauxVenteFilter, marketplace];
                     }
                 })
-                setMarketplaces(canauxVenteFilter) 
+                setMarketplaces(canauxVenteFilter);
+                setIsLoading(false);
             }
-        }).catch((err) => setError(err.message));
+        }).catch((err) => {
+            setError(err.message);
+            setIsLoading(false);
+        });
     }
 
     useEffect(() => {
         getMarketPlacesDataByStatus();
     }, []);
 
+    const triggerRef = useRef(null);
+    const onGrabData = (currentPage) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if (currentPage !== TOTAL_PAGES) {
+                    const data1 = marketplaces.slice(
+                        ((currentPage - 2) % TOTAL_PAGES) * NUMBER_PER_PAGE,
+                        NUMBER_PER_PAGE * (currentPage * TOTAL_PAGES)
+                    );
+                    resolve(data1);
+                }
+            }, 900);
+        });
+    }
+
+    console.log(onGrabData)
+    const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
 
     return (
         <>
-            <div className='bg-gray-200 w-full min-h-screen flex justify-center '>
+            <div className='w-full min-h-screen flex justify-center '>
                 <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
                     {
-                        marketplaces?.map((marketplace, index) => (
-                            <div className='w-96 h-fit p-2 m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
-                                <div className='h-40' onClick={() => {
-                                    setShowDetailModal(true);
-                                    setCVIndex(marketplace.Name);
-                                }}>
-                                    <img className='w-96 p-4 align-middle object-cover rounded-xl' alt="logo" src={marketplace.Logo} />
-                                </div>
-                                <div className='p-2'>
-                                    <h2 className='font-bold text-lg'>
-                                        <a href={marketplace.Link} target="_blank" rel="noreferrer">
-                                            {marketplace.Name}
-                                        </a>
-                                    </h2>
-                                    <p className='text-sm text-600'>{marketplace.Description}</p>
-                                </div>
-                                <div className='m-2'>
-                                    <button className='text-white bg-primaryLight px-3 py-1 rounded-md hover:bg-primaryDark'>Learn More</button>
-                                </div>
+                        (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
+                            data?.map((marketplace, index) => (
+                                <div className='w-96 h-fit p-2 m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
+                                    <div className='h-40' onClick={() => {
+                                        setShowDetailModal(true);
+                                        setCVIndex(marketplace.Name);
+                                    }}>
+                                        <img className='w-96 p-4 align-middle object-cover rounded-xl' alt="logo" src={marketplace.Logo} />
+                                    </div>
+                                    <div className='p-2'>
+                                        <h2 className='font-bold text-lg'>
+                                            <a href={marketplace.Link} target="_blank" rel="noreferrer">
+                                                {marketplace.Name}
+                                            </a>
+                                        </h2>
+                                        <p className='text-sm text-600'>{marketplace.Description}</p>
+                                    </div>
+                                    <div className='m-2'>
+                                        <button className='text-white bg-primaryLight px-3 py-1 rounded-md hover:bg-primaryDark'>Learn More</button>
+                                    </div>
 
-                            </div>
-                        ))
+                                </div>
+                            ))
                     }
+
+                    <div ref={triggerRef} className={clsx("trigger", { visible: loading })}>
+                        <LoadingCard />
+                    </div>
                 </div>
+
             </div>
             <CvDetailsModal onClose={handleOnClose} visible={showDetailModal} marketIndex={CVIndex} />
         </>
