@@ -3,7 +3,7 @@ import React from 'react';
 
 const MenuItems = ({ showMenu, active }) => {
     return (
-        <ul className={active ? 'flex-col flex items-center fixed inset-0 left-1/3 uppercase backdrop-blur-lg gap-8 justify-center p-8 md:hidden text-black' : 'hidden'}>
+        <ul className={active ? 'flex-col flex items-center fixed inset-0 left-1/3 uppercase backdrop-blur-lg gap-8 justify-center p-8 md:hidden text-black zIndex' : 'hidden'}>
             <Close onClick={showMenu} className='cursor-pointer' />
             <li>Products</li>
             <li>Commandes</li>

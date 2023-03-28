@@ -27,3 +27,14 @@
     margin-left: auto;
     margin-right: auto;
 }
+.premier_plan{
+    position:relative;
+    z-index: 10;
+}
+.deuxieme_plan{
+    position:relative;
+    z-index: 1;
+}
+.zIndex{
+    z-index: 10;
+}

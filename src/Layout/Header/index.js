@@ -1,131 +1,16 @@
-import { React, useState } from 'react';
-import { Link } from "react-router-dom";
+import React from 'react';
+import UpperNav from './UpperNav';
+import LowerNav from './LowerNav';
 import "./style.css";
-import { Navbar, NavbarText } from 'reactstrap';
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Badge from "@mui/material/Badge";
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
-import HelpIcon from '@mui/icons-material/Help';
-import MenuOutlined from '@mui/icons-material/Menu';
-
-import MenuItems from './MenuItems';
-import Octopia from "../../Assets/images/Octopia.png"
 
 
 const Header = () => {
 
-  const [active, setActive] = useState(false)
-
-  const showMenu = () => {
-    setActive(!active)
-  }
-
   return (
     <>
 
-      <Navbar className="header_top">
-        <div className="header_top_content_left">
-          <Link to={"/"}>
-            <img
-              alt="logo"
-              src={Octopia}
-              style={{
-                height: 40,
-                width: 140,
-                marginLeft: "30px",
-              }}
-            />
-          </Link>
-        </div>
-        <div className="header_top_content_center hidden md:flex text-center">
-          <NavbarText >
-            <p>Bienvenue dans votre espace vendeur</p>
-            <p className='font-semibold'>Mehdi IJIKKI (123)</p>
-          </NavbarText>
-        </div>
-        <div className="header_top_content_right hidden sm:flex">
-          <ListItemIcon>
-            <Badge
-              badgeContent={2}
-              sx={{
-                "& .MuiBadge-badge": {
-                  backgroundColor: "azure",
-                  padding: 0,
-                  fontSize: { xs: ".7rem", sm: ".75rem" },
-                  fontWeight: "bold",
-                  minWidth: { xs: "auto", sm: "8px" },
-                  width: {
-                    xs: ".8rem",
-                    sm: ".9rem",
-                  },
-                  height: {
-                    xs: ".8rem",
-                    sm: ".9rem",
-                  },
-                  marginRight: 3
-                },
-              }}
-            >
-              <NotificationsIcon
-                sx={{
-                  fontSize: {
-                    xs: "1.4em",
-                    sm: "1.4em",
-                  },
-                  color: "azure",
-                  marginRight: 3
-                }}
-              />
-            </Badge>
-            <SettingsIcon
-              sx={{
-                fontSize: {
-                  xs: "1.4em",
-                  sm: "1.4em",
-                },
-                color: "azure",
-                marginRight: 3
-              }}
-            />
-            <HelpIcon
-              sx={{
-                fontSize: {
-                  xs: "1.4em",
-                  sm: "1.4em",
-                },
-                color: "azure",
-                marginRight: 3
-              }}
-            />
-          </ListItemIcon>
-        </div>
-
-      </Navbar>
-
-
-      <Navbar className="header_bottom w-full text-white  justify-between ">
-
-        <div className='absolute right-6 md:hidden scale-120'>
-          <MenuOutlined onClick={showMenu} className='scale-150 cursor-pointer' />
-        </div>
-
-        <ul className='hidden md:flex gap-9 center_element'>
-          <li>Products</li>
-          <li>Commandes</li>
-          <li>Finance</li>
-          <li>Rapports</li>
-          <li>Seller Performance</li>
-          <li>Messages</li>
-          <li>Marketing</li>
-          <Link to={"/marketplace"}>
-            <li>Marketplaces</li>
-          </Link>
-        </ul>
-
-        <MenuItems showMenu={showMenu} active={active} />
-
-      </Navbar>
+      <UpperNav className="deuxieme_plan"/>
+      <LowerNav className="premier_plan"/>
 
     </>
   )

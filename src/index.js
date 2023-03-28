@@ -4,12 +4,15 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from "@material-tailwind/react";
+import "./Hooks/i18next"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ThemeProvider>
-        <App />
-    </ThemeProvider>
+    <React.StrictMode>
+        <ThemeProvider>
+            <App />
+        </ThemeProvider>
+    </React.StrictMode>
 );
 
 reportWebVitals();

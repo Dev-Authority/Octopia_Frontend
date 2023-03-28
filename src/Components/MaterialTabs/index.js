@@ -7,6 +7,7 @@ import {
     TabPanel
 } from "@material-tailwind/react";
 import CvCard from "../CvCard";
+import "./style.css";
 
 const MaterialTabs = () => {
 
@@ -19,7 +20,7 @@ const MaterialTabs = () => {
 
     return (
         <Tabs value="All Marketplaces" className="mt-4 ml-12">
-            <TabsHeader className="w-5/12">
+            <TabsHeader className="w-5/12 deuxieme_plan">
                 {data.map((label, index) => (
                     <Tab key={index} value={label}>
                         {label}
@@ -34,7 +35,7 @@ const MaterialTabs = () => {
                 }}>
                 {data.map((label, index) => (
                     <TabPanel key={index} value={label}>
-                        <CvCard tag={label} />
+                        <CvCard tag={label}  className="premier_plan"/>
                     </TabPanel>
                 ))}
             </TabsBody>

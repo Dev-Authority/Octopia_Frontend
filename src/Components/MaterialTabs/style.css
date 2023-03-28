@@ -1,0 +1,8 @@
+.premier_plan{
+    position:relative;
+    z-index: 10;
+}
+.deuxieme_plan{
+    position:relative;
+    z-index: 1;
+}

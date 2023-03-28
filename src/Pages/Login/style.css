@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+.zIndex{
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+}
+.inputBox{
+    position: relative;
+    width: 100%;
+    gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.inputBox input{
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid rgb(28,120,182);
+    border-radius: 40px;
+    outline: none;
+    color: #001944;
+    font-size: 1em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 15px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgb(28,120,182);
+    text-transform: uppercase;
+    margin-top: 4px;
+    transition: 0.4s;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span{
+    color: rgb(28,120,182);
+    transform: translateX(50px) translateY(-1px);
+    font-size: 0.65em;
+    padding: 0 8px;
+    background: white;
+    border-left: 2px solid #001944;
+    border-right: 2px solid #001944;
+    letter-spacing: 0.2em;
+}
+.toggleBox{
+    position: relative;
+    width: 250px;
+    gap: 30px;
+    margin-left: 20px;
+}
+.toggleBox span{
+    margin-left: 10px;
+}
+.LogText{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 2em ;
+    font-weight: bold;
+}
+.LogDesc{
+    font-weight: lighter;
+}
+.Login_btn{
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+    color: white;
+    background-color: #0041ff;
+    margin-top: 40px;
+}

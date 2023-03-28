@@ -1,0 +1,8 @@
+{
+    "title":"Acceda a su cuenta",
+    "description":"Bienvenido de nuevo ! Introduzca su nombre de usuario y contraseña para acceder a su cuenta.",
+    "email":"Correo electrónico",
+    "password":"Contraseña",
+    "showPassword":"Mostrar contraseña",
+    "login":"Acceso"
+}

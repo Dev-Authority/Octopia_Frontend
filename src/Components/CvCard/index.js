@@ -1,11 +1,9 @@
-import { React, useEffect, useState, useRef } from 'react';
+import { React, useEffect, useState } from 'react'
 // import { apiURL } from '../../Assets/util/api'
-import axios from 'axios';
+import axios from 'axios'
 import CvDetailsModal from './CvDetailsModal';
 import LoadingRing from '../LoadingRing';
-import LoadingCard from '../LoadingCard';
-import clsx from 'clsx';
-import useLazyLoad from '../../Hooks/useLazyLoad';
+
 
 const CvCard = (props) => {
 
@@ -14,11 +12,6 @@ const CvCard = (props) => {
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [CVIndex, setCVIndex] = useState();
-
-    const NUMBER_PER_PAGE = 7;
-    const TOTAL_PAGES = 3;
-
-
 
     var canauxVente = [];
     var canauxVenteFilter = [];
@@ -68,35 +61,18 @@ const CvCard = (props) => {
         getMarketPlacesDataByStatus();
     }, []);
 
-    const triggerRef = useRef(null);
-    const onGrabData = (currentPage) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                if (currentPage !== TOTAL_PAGES) {
-                    const data1 = marketplaces.slice(
-                        ((currentPage - 2) % TOTAL_PAGES) * NUMBER_PER_PAGE,
-                        NUMBER_PER_PAGE * (currentPage * TOTAL_PAGES)
-                    );
-                    resolve(data1);
-                }
-            }, 900);
-        });
-    }
-
-    console.log(onGrabData)
-    const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
 
     return (
         <>
-            <div className='w-full min-h-screen flex justify-center '>
+            <div className='w-full min-h-screen flex justify-center'>
                 <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
                     {
                         (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
-                            data?.map((marketplace, index) => (
+                            marketplaces?.map((marketplace, index) => (
                                 <div className='w-96 h-fit p-2 m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
                                     <div className='h-40' onClick={() => {
                                         setShowDetailModal(true);
-                                        setCVIndex(marketplace.Name);
+                                        setCVIndex(index);
                                     }}>
                                         <img className='w-96 p-4 align-middle object-cover rounded-xl' alt="logo" src={marketplace.Logo} />
                                     </div>
@@ -116,13 +92,12 @@ const CvCard = (props) => {
                             ))
                     }
 
-                    <div ref={triggerRef} className={clsx("trigger", { visible: loading })}>
-                        <LoadingCard />
-                    </div>
+                    
                 </div>
-
+                
             </div>
-            <CvDetailsModal onClose={handleOnClose} visible={showDetailModal} marketIndex={CVIndex} />
+            {showDetailModal && <CvDetailsModal onClose={handleOnClose} visible={showDetailModal} marketIndex={CVIndex}/>}
+            
         </>
     )
 }
