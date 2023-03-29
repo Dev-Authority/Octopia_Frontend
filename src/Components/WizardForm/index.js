@@ -9,7 +9,7 @@ import OnlineStore from './Steps/OnlineStore';
 import Final from './Steps/Final';
 
 
-const WizardForm = () => {
+const WizardForm = (props) => {
 
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -44,12 +44,15 @@ const WizardForm = () => {
 
     return (
         <>
-            <div className="mx-auto rounded-2xl bg-white pb-2 shadow-xl md:w-10/12">
+            <div className="mx-auto rounded-2xl bg-white pb-2 shadow-xl w-11/12 md:w-10/12">
                 {/* Stepper */}
-                <div className="horizontal container mt-5 ">
+                <div className="horizontal container mt-5">
+                    <div className="flex items-center justify-center mt-5 text-4xl">
+                        <h1>{props.marketplaceName}</h1>
+                    </div>
                     <Stepper steps={steps} currentStep={currentStep} />
 
-                    <div className="my-10 p-10 ">
+                    <div className="py-10 ">
                         <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
                     </div>
                 </div>

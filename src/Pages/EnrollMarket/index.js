@@ -7,11 +7,12 @@ const EnrollMarket = () => {
 
   const location = useLocation();
   const { Name, Slogan, Logo, Link, Description, Features } = location.state;
-  console.log(Name)
+  // console.log(Name)
+
   return (
     <>
       <Header />
-      <WizardForm />
+      <WizardForm marketplaceName={Name}/>
       
     </>
 
