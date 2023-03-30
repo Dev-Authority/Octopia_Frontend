@@ -57,6 +57,7 @@ const CvCard = (props) => {
         });
     }
 
+
     useEffect(() => {
         getMarketPlacesDataByStatus();
     }, []);
@@ -68,7 +69,7 @@ const CvCard = (props) => {
                 <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
                     {
                         (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
-                            marketplaces?.map((marketplace, index) => (
+                            marketplaces?.sort((a,b) => a.Score > b.Score ? -1 : 1).map((marketplace, index) => (
                                 <div className='w-96 h-fit p-2 m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
                                     <div className='h-40' onClick={() => {
                                         setShowDetailModal(true);

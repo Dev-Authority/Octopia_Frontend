@@ -1,17 +1,36 @@
-import { React} from 'react';
+import { React, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "./style.css";
 import { Navbar, NavbarText } from 'reactstrap';
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Badge from "@mui/material/Badge";
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import "../../Hooks/i18next"
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HelpIcon from '@mui/icons-material/Help';
+import { Select } from "antd";
 
 import Octopia from "../../Assets/images/Octopia.png"
 
+const Languages = [["English", "en"], ["Español", "es"], ["Français", "fr"]];
 
 const UpperNav = () => {
+
+
+  const { t } = useTranslation(["Navbar"]);
+
+  const handleLanguageChange = (value) => {
+    i18next.changeLanguage(value);
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("i18nextLang")?.length > 2) {
+      i18next.changeLanguage("en");
+    }
+  })
+
 
   return (
     <>
@@ -32,12 +51,12 @@ const UpperNav = () => {
         </div>
         <div className="header_top_content_center hidden md:flex text-center">
           <NavbarText >
-            <p>Bienvenue dans votre espace vendeur</p>
+            <p>{t("Welcome")}</p>
             <p className='font-semibold'>Mehdi IJIKKI (123)</p>
           </NavbarText>
         </div>
         <div className="header_top_content_right hidden sm:flex">
-          <ListItemIcon>
+          <ListItemIcon className='mt-1'>
             <Badge
               badgeContent={2}
               sx={{
@@ -92,6 +111,22 @@ const UpperNav = () => {
             />
           </ListItemIcon>
         </div>
+        <Select
+          value={localStorage.getItem("i18nextLng")}
+          className="mr-2 mb-2 premier_plan fixed bottom-0 right-0 selectStyle"
+          dropdownAlign={{ offset: [0, -150] }}
+          onChange={(value) => {
+            // setSelectedType(value);
+            handleLanguageChange(value);
+          }}
+          options={Languages?.map((type) => {
+            return {
+              label: `${type[0]}`,
+              value: type[1],
+            };
+          })}
+        >
+        </Select>
 
       </Navbar>
     </>

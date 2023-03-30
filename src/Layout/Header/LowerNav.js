@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { Link } from "react-router-dom";
 import "./style.css";
+import { useTranslation } from 'react-i18next';
 import { Navbar} from 'reactstrap';
 import MenuOutlined from '@mui/icons-material/Menu';
 
@@ -9,7 +10,9 @@ import MenuItems from './MenuItems';
 
 const Header = () => {
 
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
+
+  const { t } = useTranslation(["Navbar"]);
 
   const showMenu = () => {
     setActive(!active)
@@ -25,15 +28,15 @@ const Header = () => {
         </div>
 
         <ul className='hidden md:flex gap-9 center_element'>
-          <li>Products</li>
-          <li>Commandes</li>
-          <li>Finance</li>
-          <li>Rapports</li>
-          <li>Seller Performance</li>
-          <li>Messages</li>
-          <li>Marketing</li>
+          <li>{t("Products")}</li>
+          <li>{t("Commandes")}</li>
+          <li>{t("Finance")}</li>
+          <li>{t("Rapports")}</li>
+          <li>{t("SellerPerformance")}</li>
+          <li>{t("Messages")}</li>
+          <li>{t("Marketing")}</li>
           <Link to={"/marketplace"}>
-            <li>Marketplaces</li>
+            <li>{t("Marketplaces")}</li>
           </Link>
         </ul>
 

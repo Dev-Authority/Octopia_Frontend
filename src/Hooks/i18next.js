@@ -12,7 +12,7 @@ i18n.use(Backend)
         },
         fallbackLng:"en",
         debug: false,
-        ns:["Login", "Home", "Marketplaces"],
+        ns:["Login", "Home", "Marketplaces","Navbar"],
         interpolation:{
             espaceValue:false,
             formatSeparator:",",

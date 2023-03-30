@@ -38,3 +38,8 @@
 .zIndex{
     z-index: 10;
 }
+.selectStyle{
+    border-color: rgb(2,41,64);
+    border-width: 1px;
+    border-radius: 8px;
+}

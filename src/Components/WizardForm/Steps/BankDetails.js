@@ -20,6 +20,7 @@ const BankDetails = () => {
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Bank Name *</span>
           <Select
+            showSearch
             value={selectedBankName}
             className="w-full md:w-1/2"
             placeholder="Bank Name"
@@ -53,6 +54,7 @@ const BankDetails = () => {
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Country *</span>
           <Select
+            showSearch
             // value={" "}
             className="w-full md:w-1/2"
             placeholder="Country"
