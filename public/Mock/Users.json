@@ -1,0 +1,58 @@
+{
+    "Users" : [
+        {
+            "id" : "63f392bea8015be280831abf",
+            "FullName" : "Mehdi IJKKI",
+            "Country" : "Spain",
+            "BankInfo" : 
+            {
+                "BankName" : "CitiGroup",
+                "AccountHolder" : "Mehdi IJKKI",
+                "Country" : "Irland",
+                "IBAN" : "123456",
+                "BIC/SWIFT" : "12345678"
+            },
+            "Category" : "Electronic",
+            "IDVerf" : true,
+            "CompanyVerf" : false,
+            "BankVerf" : false
+
+        },
+        {
+            "id" : "63f392bea8015be280832abf",
+            "FullName" : "Anass Harah",
+            "Country" : "France",
+            "BankInfo" : 
+            {
+                "BankName" : "Groupe Crédit Agricole",
+                "AccountHolder" : "Anass Harah",
+                "Country" : "France",
+                "IBAN" : "123456",
+                "BIC/SWIFT" : "45678923"
+            },
+            "Category" : "Health and Beauty",
+            "IDVerf" : true,
+            "CompanyVerf" : true,
+            "BankVerf" : true
+
+        },
+        {
+            "id" : "63f392bea8015be280833abf",
+            "FullName" : "Amine Namass",
+            "Country" : "United Kingdom",
+            "BankInfo" : 
+            {
+                "BankName" : "Deutsche Bank",
+                "AccountHolder" : "Amine Namass",
+                "Country" : "Germany",
+                "IBAN" : "456780",
+                "BIC/SWIFT" : "0987654323"
+            },
+            "Category" : "Jewellery",
+            "IDVerf" : true,
+            "CompanyVerf" : false,
+            "BankVerf" : true
+
+        }
+    ]
+}

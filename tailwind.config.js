@@ -7,10 +7,10 @@ module.exports = withMT({
   theme: {
     screens: {
       'sm': '400px',
-      // => @media (min-width: 640px) { ... }
+      // => @media (min-width: 400px) { ... }
 
       'md': '924px',
-      // => @media (min-width: 768px) { ... }
+      // => @media (min-width: 924px) { ... }
 
       'lg': '1024px',
       // => @media (min-width: 1024px) { ... }
@@ -18,8 +18,8 @@ module.exports = withMT({
       'xl': '1280px',
       // => @media (min-width: 1280px) { ... }
 
-      '2xl': '1536px',
-      // => @media (min-width: 1536px) { ... }
+      '2xl': '1640px',
+      // => @media (min-width: 1640px) { ... }
     },
     extend: {
       colors: {

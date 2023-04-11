@@ -39,7 +39,7 @@ const CvDetailsModal = ({ visible, onClose, marketIndex }) => {
             {
                 (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
                 marketplaces?.map((marketplace, index) => {
-                    if (index === marketIndex) {
+                    if (marketplace.id === marketIndex) {
                         return (
                             <div onClick={handleOnClose} className='fixed inset-0 bg-black/60 bg-opacity-30 backdrop-blur-sm flex justify-center items-center rounded' key={index}>
 

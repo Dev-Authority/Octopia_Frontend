@@ -1,6 +1,7 @@
 {
     "Marketplaces": [
         {
+            "id":"63f381cda8015be280831abc",
             "Name": "Worten",
             "Slogan": "Une entreprise digitale avec des boutiques physiques et un contact humain",
             "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pj&oid=00D58000000dZI5&lastMod=1654156718000",
@@ -16,6 +17,7 @@
             "Score":4.4
         },
         {
+            "id":"63f381cda8015be280832abc",
             "Name": "Casino.fr",
             "Slogan": "L'acteur historique du retail (alimentaire et produits de grandes consommation) en France",
             "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pA&oid=00D58000000dZI5&lastMod=1654156373000",
@@ -31,6 +33,7 @@
             "Score":2.4
         },
         {
+            "id":"63f381cda8015be280833abc",
             "Name": "CDON",
             "Slogan": "La possibilité d'atteindre des millions de nouveaux clients des pays nordiques",
             "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pF&oid=00D58000000dZI5&lastMod=1654156427000",
@@ -46,6 +49,7 @@
             "Score":4.1
         },
         {
+            "id":"63f381cda8015be280834abc",
             "Name": "Europazon.fr",
             "Slogan": "Le made in Europe au meilleur prix",
             "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pK&oid=00D58000000dZI5&lastMod=1654156465000",
@@ -61,6 +65,7 @@
             "Score":2.9
         },
         {
+            "id":"63f381cda8015be280835abc",
             "Name": "MarjaneMall.ma",
             "Slogan": "La marketplace d'un des plus grands retailers Africains",
             "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pP&oid=00D58000000dZI5&lastMod=1654156640000",
@@ -76,6 +81,7 @@
             "Score":4.3
         },
         {
+            "id":"63f381cda8015be280836abc",
             "Name": "Carethy",
             "Slogan": "La plus grande marketplace mondiale de la beauté, du soin et du bien-être",
             "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pU&oid=00D58000000dZI5&lastMod=1654156335000",
@@ -91,6 +97,7 @@
             "Score":3.8
         },
         {
+            "id":"63f381cda8015be280837abc",
             "Name": "Rakuten",
             "Slogan": "L'une des marketplaces leader en France",
             "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i000001J6pe&oid=00D58000000dZI5&lastMod=1654156677000",

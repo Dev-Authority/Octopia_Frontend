@@ -19,7 +19,7 @@ const MaterialTabs = () => {
 
 
     return (
-        <Tabs value="All Marketplaces" className="mt-4 ml-12">
+        <Tabs value="All Marketplaces" className="mt-4 2xl:ml-12">
             <TabsHeader className="w-5/12 deuxieme_plan">
                 {data.map((label, index) => (
                     <Tab key={index} value={label}>
