@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Select, Input, Button, Upload, Form } from 'antd';
-import { BanksNames, Countries } from '../../../Constants/Banks'
+import { BanksNames, Countries } from '../../../Constants/Banks';
+import Validation from '../Validation/Validation'
 import SelectInput from '../../Inputs/SelectInput';
 import SimpleInput from '../../Inputs/SimpleInput';
 import { SubscriptionData } from '../../../Redux/Reducers/RTKSubscription';
 
-const BankDetails = () => {
+const BankDetails = (handleValidationn) => {
 
-  const [selectedData, setSelectedData] = useState([]);
+  const [selectedData, setSelectedData] = useState(
+    {
+    IBAN: "",
+    accountHolder:"",
+    bankName:"",
+    city:"",
+    country:"",
+    postalCode:"",
+    streetAdress:"",
+    streetAdress2:"",
+    SWIFT:""
+  });
+  const [error, setError] = useState([]);
 
   const handleData = (data, dataName) => {
     setSelectedData({ ...selectedData, [dataName]: data });
@@ -24,6 +37,10 @@ const BankDetails = () => {
   const bankDetailsDataToState = () => {
     dispatch(SubscriptionData(selectedData));
   }
+  
+  const handleValidation = () => {
+    setError(Validation(selectedData));
+  }
 
 
   return (
@@ -37,11 +54,13 @@ const BankDetails = () => {
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Bank Name *</span>
           <SelectInput dataArray={BanksNames} placeHolder="Bank Name" dataName="bankName" handleData={handleData} />
+          <p className='text-red-600 ml-6 md:ml-72'>{error.bankName}</p>
         </div>
 
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Account holder *</span>
-          <SimpleInput placeHolder="Account holder" dataName="accountHolder" handleData={handleData} value={SubscriptionRTK.name} />
+          <SimpleInput placeHolder="Account holder" dataName="accountHolder" handleData={handleData} type="text"/>
+          <p className='text-red-600 ml-6 md:ml-72'>{error.accountHolder}</p>
         </div>
 
         <div className="py-6 md:p-6 ">
@@ -51,38 +70,44 @@ const BankDetails = () => {
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Country *</span>
           <SelectInput dataArray={Countries} placeHolder="Country" dataName="country" handleData={handleData} />
+          <p className='text-red-600 ml-6 md:ml-72'>{error.country}</p>
         </div>
 
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Street address *</span>
-          <SimpleInput placeHolder="Street address" dataName="streetAdress" handleData={handleData} />
+          <SimpleInput placeHolder="Street address" dataName="streetAdress" handleData={handleData} type="text"/>
+          <p className='text-red-600 ml-6 md:ml-72'>{error.streetAdress}</p>
         </div>
 
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Address line 2 (optional)</span>
-          <SimpleInput placeHolder="Address line 2 (optional)" dataName="streetAdress2" handleData={handleData} />
+          <SimpleInput placeHolder="Address line 2 (optional)" dataName="streetAdress2" handleData={handleData} type="text"/>
         </div>
 
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>Postcode *</span>
-          <SimpleInput placeHolder="Postcode" dataName="postalCode" handleData={handleData} />
+          <SimpleInput placeHolder="Postcode" dataName="postalCode" handleData={handleData} type="number"/>
+          <p className='text-red-600 ml-6 md:ml-72'>{error.postalCode}</p>
         </div>
 
         <div className="py-6 md:p-6 ">
           <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>City *</span>
-          <SimpleInput placeHolder="City" dataName="city" handleData={handleData} />
+          <SimpleInput placeHolder="City" dataName="city" handleData={handleData} type="text"/>
+          <p className='text-red-600 ml-6 md:ml-72'>{error.city}</p>
         </div>
 
         <div className='p-6 bg-gray-50 rounded-xl'>
 
           <div className="pb-6">
             <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>IBAN *</span>
-            <SimpleInput placeHolder="IBAN" dataName="IBAN" handleData={handleData} />
+            <SimpleInput placeHolder="IBAN" dataName="IBAN" handleData={handleData} type="text"/>
+            <p className='text-red-600 ml-6 md:ml-72'>{error.IBAN}</p>
           </div>
 
           <div className="py-6">
             <span className='mr-6 m-2 w-full md:w-2/12 inline-block'>BIC / SWIFT *</span>
-            <SimpleInput placeHolder="BIC / SWIFT" dataName="SWIFT" handleData={handleData} />
+            <SimpleInput placeHolder="BIC / SWIFT" dataName="SWIFT" handleData={handleData} type="text"/>
+            <p className='text-red-600 ml-6 md:ml-72'>{error.SWIFT}</p>
           </div>
 
         </div>
@@ -108,7 +133,7 @@ const BankDetails = () => {
           </Upload>
         </div>
 
-        <Button onClick={bankDetailsDataToState}>Submit</Button>
+        <Button onClick={handleValidation}>Submit</Button>
 
       </div>
     </>

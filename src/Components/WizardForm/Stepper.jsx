@@ -15,7 +15,7 @@ const Stepper = ({ steps, currentStep }) => {
           ...newSteps[count],
           highlighted: true,
           selected: true,
-          completed: true,
+          completed: false,
         };
         count++;
       }
@@ -79,7 +79,11 @@ const Stepper = ({ steps, currentStep }) => {
               step.selected
                 ? "bg-green-600 text-white font-bold border border-green-600 "
                 : ""
-            }`}
+            } ${
+              step.completed
+                ? "bg-green-600 text-white font-bold border border-green-600 "
+                : ""
+            }` }
           >
             {step.completed ? (
               <span className="text-white font-bold text-xl">&#10003;</span>

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { apiURL } from '../../Assets/util/api'
 import axios from 'axios';
 import { MarketData } from '../../Redux/Reducers/RTKMarketplace'
-import CvDetailsModal from './CvDetailsModal';
+import CvDetailsModal from '../CVModal/CvDetailsModal';
 import LoadingRing from '../LoadingRing';
 import RejectedIcon from '@mui/icons-material/CancelRounded';
 import ApprovedIcon from '@mui/icons-material/CheckCircleRounded';
@@ -126,26 +126,26 @@ const CvCard = (props) => {
 
                                     </div>
 
-                                    <div className='h-40' onClick={() => {
-                                        setShowDetailModal(true);
-                                        setCVIndex(marketplace.id);
-                                    }}>
-                                        <img
-                                            className='w-96 p-4 align-middle object-cover rounded-xl z-0'
-                                            alt="logo"
-                                            src={marketplace.Logo} />
+                                    <div className='h-40'>
+                                        <a href={marketplace.Link} target="_blank" rel="noreferrer">
+                                            <img
+                                                className='w-96 p-4 align-middle object-cover rounded-xl z-0'
+                                                alt="logo"
+                                                src={marketplace.Logo} />
+                                        </a>
                                     </div>
 
                                     <div className='p-2'>
-                                        <h2 className='font-bold text-lg'>
-                                            <a href={marketplace.Link} target="_blank" rel="noreferrer">
-                                                {marketplace.Name}
-                                            </a>
-                                        </h2>
                                         <p className='text-sm text-600'>{marketplace.Description}</p>
                                     </div>
                                     <div className='m-2'>
-                                        <button className='text-white bg-primaryLight px-3 py-1 rounded-md hover:bg-primaryDark'>Learn More</button>
+                                        <button className='text-white bg-primaryLight px-3 py-1 rounded-md hover:bg-primaryDark'
+                                            onClick={() => {
+                                                setShowDetailModal(true);
+                                                setCVIndex(marketplace.id);
+                                            }}>
+                                            Learn More
+                                        </button>
                                     </div>
 
                                 </div>

@@ -7,6 +7,7 @@ import BankDetails from './Steps/BankDetails';
 import Documents from './Steps/Documents';
 import OnlineStore from './Steps/OnlineStore';
 import Final from './Steps/Final';
+import { Button } from 'antd';
 
 
 const WizardForm = (props) => {
@@ -23,7 +24,7 @@ const WizardForm = (props) => {
     const displayStep = (step) => {
         switch (step) {
             case 1:
-                return <BankDetails />
+                return <BankDetails  />
             case 2:
                 return <Documents />
             case 3:
@@ -32,6 +33,10 @@ const WizardForm = (props) => {
                 return <Final />
             default:
         }
+    }
+
+    const handleValidation = () => {
+        console.log("hhhhhhhhhhhhhhh")
     }
 
     const handleClick = (direction) => {
@@ -56,10 +61,12 @@ const WizardForm = (props) => {
                         <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
                     </div>
                 </div>
+                <Button onClick={handleValidation}>SUBMIT</Button>
 
                 {/* navigation button */}
                 {currentStep !== steps.length && (
                     <StepperControl
+                        handleValidation={handleValidation}
                         handleClick={handleClick}
                         currentStep={currentStep}
                         steps={steps}

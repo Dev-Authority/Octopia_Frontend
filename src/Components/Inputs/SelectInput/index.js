@@ -2,7 +2,7 @@ import React from 'react'
 import { Select, Button } from 'antd';
 
 const SelectInput = (props) => {
-    
+
     return (
         <>
             <Select

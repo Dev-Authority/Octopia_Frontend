@@ -33,6 +33,23 @@ const OnlineStore = () => {
           </div>
         </>
 
+        <>
+          <div className="py-6 md:p-6 ">
+            <span className='mr-6 m-2 w-full md:w-2/5 text-xl '>Store Banner</span>
+          </div>
+
+          <div className="py-6 md:p-6 ">
+            <span className='mr-6 m-2 w-full md:w-4/12 inline-block'>Store banner (2560*1440)px *</span>
+            <Upload.Dragger
+              listType="picture"
+            >
+              Drag Files Here OR
+              <br /><br />
+              <Button>Browse</Button>
+            </Upload.Dragger>
+          </div>
+        </>
+
       </div>
     </>
   )
