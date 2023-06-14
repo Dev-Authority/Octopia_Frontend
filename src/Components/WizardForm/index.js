@@ -8,6 +8,8 @@ import Documents from './Steps/Documents';
 import OnlineStore from './Steps/OnlineStore';
 import Final from './Steps/Final';
 import { Button } from 'antd';
+import BackButton from '../BackButton/BackButton';
+import { Link } from 'react-router-dom';
 
 
 const WizardForm = (props) => {
@@ -24,11 +26,29 @@ const WizardForm = (props) => {
     const displayStep = (step) => {
         switch (step) {
             case 1:
-                return <BankDetails  />
+                return currentStep !== steps.length && (
+                    <BankDetails
+                        handleClick={handleClick}
+                        currentStep={currentStep}
+                        steps={steps}
+                    />
+                )
             case 2:
-                return <Documents />
+                return currentStep !== steps.length && (
+                    <Documents
+                        handleClick={handleClick}
+                        currentStep={currentStep}
+                        steps={steps}
+                    />
+                )
             case 3:
-                return <OnlineStore />
+                return currentStep !== steps.length && (
+                    <OnlineStore
+                        handleClick={handleClick}
+                        currentStep={currentStep}
+                        steps={steps}
+                    />
+                )
             case 4:
                 return <Final />
             default:
@@ -49,7 +69,14 @@ const WizardForm = (props) => {
 
     return (
         <>
+            <div className='pl-8 pt-8'>
+                <Link  to={"/marketplace"}>
+                    <BackButton />
+                </Link>
+            </div>
+
             <div className="mx-auto rounded-2xl bg-white pb-2 shadow-xl w-11/12 md:w-10/12">
+
                 {/* Stepper */}
                 <div className="horizontal container mt-5">
                     <div className="flex items-center justify-center mt-5 text-4xl">
@@ -58,20 +85,21 @@ const WizardForm = (props) => {
                     <Stepper steps={steps} currentStep={currentStep} />
 
                     <div className="py-10 ">
-                        <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
+                        <UseContextProvider>
+                            {displayStep(currentStep)}
+                        </UseContextProvider>
                     </div>
                 </div>
-                <Button onClick={handleValidation}>SUBMIT</Button>
 
                 {/* navigation button */}
-                {currentStep !== steps.length && (
+                {/* {currentStep !== steps.length && (
                     <StepperControl
                         handleValidation={handleValidation}
                         handleClick={handleClick}
                         currentStep={currentStep}
                         steps={steps}
                     />
-                )}
+                )} */}
             </div>
         </>
     )

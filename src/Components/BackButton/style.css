@@ -1,0 +1,90 @@
+.slideButtons {
+    width: 100px;
+    height: 40px;
+    border: 1px solid rgb(28,120,182);
+    background-color: #fff;
+    color: white;
+    border-radius: 10px;
+    position: relative;
+}
+.slideButtons:hover {
+    background-color: rgb(28,120,182);
+    border-color: rgb(28,120,182);
+    color: white;
+}
+.slideButtons.back>span.backText {
+    font-size: 16px;
+    line-height: 40px;
+    opacity: 0;
+}
+.slideButtons.back>span.backText{
+    animation: backText_reverse 0.5s cubic-bezier(.17,.67,.83,.67);
+}
+.slideButtons.back:hover span.backText {
+    opacity: 1;
+}
+.slideButtons.back:hover span.backText {
+    animation: backText 0.5s cubic-bezier(.17,.67,.83,.67);
+    margin-right: -20px;
+}
+  .slideButtons.back>span.backArrow {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    fill: #333;
+    top: 0px;
+    opacity: 0.5;
+}
+.slideButtons.back>span.backArrow{
+    animation: backArrow_reverse 0.5s cubic-bezier(.17,.67,.83,.67);
+    right: 0px;
+}
+.slideButtons.back:hover span.backArrow {
+    opacity: 1;
+    fill: #fff;
+}
+.slideButtons.back:hover span.backArrow{
+    animation: backArrow 0.3s cubic-bezier(.17,.67,.83,.67);
+    right: 25px;
+}
+@keyframes backText {
+    0% {
+        margin-right: -60px;
+        opacity: 0;
+    }
+    100% {
+        margin-right: -20px;
+        opacity: 1;
+    }
+}
+@keyframes backText_reverse {
+    0% {
+        margin-right: -20px;
+        opacity: 1;
+    }
+
+    100% {
+        margin-right: -60px;
+        opacity: 0;
+    }
+}
+@keyframes backArrow {
+    0% {
+        right: 0px;
+        opacity: 0;
+    }
+    100% {
+        right: 25px;
+        opacity: 1;
+    }
+}
+@keyframes backArrow_reverse {
+    0% {
+        right: 25px;
+        opacity: 0.5;
+    }
+    100% {
+        right: 0px;
+        opacity: 0.5;
+    }
+}

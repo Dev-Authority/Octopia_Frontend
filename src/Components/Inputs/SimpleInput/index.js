@@ -5,6 +5,7 @@ const SimpleInput = (props) => {
     return (
         <>
             <Input
+                data-testid="InputSimple"
                 placeholder={props.placeHolder}
                 type={props.type}
                 className="w-full md:w-1/2"

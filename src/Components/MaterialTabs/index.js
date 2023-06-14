@@ -19,27 +19,29 @@ const MaterialTabs = () => {
 
 
     return (
-        <Tabs value="All Marketplaces" className="mt-4 2xl:ml-12">
-            <TabsHeader className="w-5/12 deuxieme_plan">
-                {data.map((label, index) => (
-                    <Tab key={index} value={label}>
-                        {label}
-                    </Tab>
-                ))}
-            </TabsHeader>
-            <TabsBody
-                animate={{
-                    initial: { y: 250 },
-                    mount: { y: 0 },
-                    unmount: { y: 250 },
-                }}>
-                {data.map((label, index) => (
-                    <TabPanel key={index} value={label}>
-                        <CvCard tag={label}  className="premier_plan"/>
-                    </TabPanel>
-                ))}
-            </TabsBody>
-        </Tabs>
+        <>
+            <Tabs value="All Marketplaces" className="mt-4 2xl:ml-12" data-testid="TabsforTest">
+                <TabsHeader className="w-5/12 deuxieme_plan">
+                    {data.map((label, index) => (
+                        <Tab key={index} value={label}>
+                            {label}
+                        </Tab>
+                    ))}
+                </TabsHeader>
+                <TabsBody
+                    animate={{
+                        initial: { y: 250 },
+                        mount: { y: 0 },
+                        unmount: { y: 250 },
+                    }}>
+                    {data.map((label, index) => (
+                        <TabPanel key={index} value={label}>
+                            <CvCard tag={label} className="premier_plan" />
+                        </TabPanel>
+                    ))}
+                </TabsBody>
+            </Tabs>
+        </>
     );
 };
 

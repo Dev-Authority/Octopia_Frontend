@@ -4,7 +4,7 @@ import Header from '../../Layout/Header';
 
 const Marketplace = () => {
     return (
-        <div className='h-max bg-gray-200'>
+        <div className='h-full bg-gray-200'>
             <Header />
             <MaterialTabs />
             

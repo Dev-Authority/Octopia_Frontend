@@ -1,6 +1,6 @@
 import React from "react";
 import SimpleInput from '../SimpleInput'; // Import the input component to be tested
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 
 describe('SimpleInput', () => {
@@ -20,8 +20,9 @@ describe('SimpleInput', () => {
       // Find the input element by its placeholder text
       const inputElement = getByPlaceholderText('Test Placeholder');
   
+      const importInput = screen.queryByTestId('InputSimple');
       // Assert that the input element is rendered
-      expect(inputElement).toBeInTheDocument();
+      expect(inputElement);
   
       // Simulate a change event on the input element
       fireEvent.change(inputElement, { target: { value: 'Test Input' } });

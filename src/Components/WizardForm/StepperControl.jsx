@@ -1,13 +1,12 @@
 import React from 'react'
 
-const StepperControl = ({ handleValidation, handleClick, currentStep, steps }) => {
-    return (
-        <div className="container mt-4 mb-8 flex justify-around">
+const StepperControl = ({handleClick, currentStep, steps }) => {
+  return (
+    <div className="container mt-4 mb-8 flex justify-around">
       <button
         onClick={() => handleClick()}
-        className={`cursor-pointer rounded-xl border-2 border-slate-300 bg-white py-2 px-4 font-semibold uppercase text-slate-400 transition duration-200 ease-in-out hover:bg-slate-700 ${
-          currentStep === 1 ? " cursor-not-allowed opacity-50 " : ""
-        }`}
+        className={`cursor-pointer rounded-xl border-2 border-slate-300 bg-white py-2 px-4 font-semibold uppercase text-slate-400 transition duration-200 ease-in-out hover:bg-slate-700 ${currentStep === 1 ? " cursor-not-allowed opacity-50 " : ""
+          }`}
       >
         Back
       </button>
@@ -19,6 +18,6 @@ const StepperControl = ({ handleValidation, handleClick, currentStep, steps }) =
         {currentStep === steps.length - 1 ? "Confirm" : "Next"}
       </button>
     </div>
-    )
+  )
 }
 export default StepperControl;

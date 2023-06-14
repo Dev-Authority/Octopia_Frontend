@@ -1,7 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Select, Input, Button, Upload } from 'antd';
+import DocumentValidation from "../Validation/DocumentValidation"
 
-const Documents = () => {
+const Documents = (props) => {
+
+  const [selectedData, setSelectedData] = useState(
+    {
+      bankDetailsFile: "",
+      commercialRegisterFile: "",
+    });
+  const [error, setError] = useState([]);
+  const [fileState, setFileState] = useState([]);
+
+  const handleData = (data, dataName) => {
+    setSelectedData({ ...selectedData, [dataName]: data });
+    console.log(selectedData);
+  }
+
+  const handleValidation = () => {
+    setError(DocumentValidation(selectedData));
+    if (error.bankDetailsFile === "" && error.commercialRegisterFile === "") { 
+      props.handleClick("next"); 
+    }
+  }
+
   return (
     <>
       <div className='px-0 md:px-20 '>
@@ -26,11 +48,16 @@ const Documents = () => {
             <Upload.Dragger
               multiple
               listType="picture"
+              onChange={(e) => {
+                setFileState(e);
+                handleData(e, "bankDetailsFile")
+              }}
             >
               Drag Files Here OR
               <br /><br />
               <Button>Browse</Button>
             </Upload.Dragger>
+            <p className='text-red-600 ml-6 md:ml-72'>{error.bankDetailsFile}</p>
           </div>
         </>
 
@@ -43,13 +70,39 @@ const Documents = () => {
             <Upload.Dragger
               multiple
               listType="picture"
+              onChange={(e) => {
+                setFileState(e);
+                handleData(e, "commercialRegisterFile")
+              }}
             >
               Drag Files Here OR
               <br /><br />
               <Button>Browse</Button>
             </Upload.Dragger>
+            <p className='text-red-600 ml-6 md:ml-72'>{error.commercialRegisterFile}</p>
           </div>
         </>
+
+        <div className="container mt-4 mb-8 flex justify-around">
+          <button
+            onClick={() => {
+              props.handleClick();
+            }}
+            className={`cursor-pointer rounded-xl border-2 border-slate-300 bg-white py-2 px-4 font-semibold uppercase text-slate-400 transition duration-200 ease-in-out hover:bg-slate-700 ${props.currentStep === 1 ? " cursor-not-allowed opacity-50 " : ""
+              }`}
+          >
+            Back
+          </button>
+
+          <button
+            onClick={() => {
+              handleValidation();
+            }}
+            className="cursor-pointer rounded-lg bg-green-500 py-2 px-4 font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-slate-700 hover:text-white"
+          >
+            {props.currentStep === props.steps.length - 1 ? "Confirm" : "Next"}
+          </button>
+        </div>
 
       </div>
     </>

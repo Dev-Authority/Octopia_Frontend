@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+//import { useSelector, useDispatch } from 'react-redux';
 // import { apiURL } from '../../Assets/util/api'
 import axios from 'axios';
-import { MarketData } from '../../Redux/Reducers/RTKMarketplace'
+//import { MarketData } from '../../Redux/Reducers/RTKMarketplace'
 import CvDetailsModal from '../CVModal/CvDetailsModal';
 import LoadingRing from '../LoadingRing';
 import RejectedIcon from '@mui/icons-material/CancelRounded';
@@ -10,6 +10,7 @@ import ApprovedIcon from '@mui/icons-material/CheckCircleRounded';
 import PendingIcon from '@mui/icons-material/AccessTimeFilledRounded';
 import NonFavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import IconButton from '@mui/material/IconButton';
 
 
 
@@ -21,25 +22,20 @@ const CvCard = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const [CVIndex, setCVIndex] = useState();
     const [itemFav, setItemFav] = useState(true);
+    const [favoris, setFavoris] = useState();
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const MarketRTK = useSelector((state) => state.marketplacesRTK.value);
+    // const MarketRTK = useSelector((state) => state.marketplacesRTK.value);
 
-    console.log("==========" + MarketRTK.name)
+    // console.log("==========" + MarketRTK.name)
 
-    const SubscriptionRTK = useSelector((state) => state.SubscriptionRTK.value);
+    // const SubscriptionRTK = useSelector((state) => state.SubscriptionRTK.value);
 
-    console.log("==========" + SubscriptionRTK.accountHolder)
+    // console.log("==========" + SubscriptionRTK.accountHolder)
 
     var canauxVente = [];
     var canauxVenteFilter = [];
-
-    // const getMarketPlacesData = () => {
-    //     axios.get("/Mock/Marketplaces.json")
-    //         .then((res) => setMarketplaces(res.data.Marketplaces))
-    //         .catch((err) => setError(err.message));
-    // }
 
     const handleOnClose = () => {
         setShowDetailModal(false);
@@ -92,13 +88,28 @@ const CvCard = (props) => {
         setItemFav(!itemFav);
     }
     // dispatch(MarketData({ name:"mehdi1" }));
-    const FavoriteDisplay = (isFavoriteMarket) => {
-        var Favorite = isFavoriteMarket;
-        switch (Favorite) {
+    const FavoriteDisplay = (isFavoriteMarket , marketId) => {
+        switch (isFavoriteMarket) {
             case true:
-                return <FavoriteIcon onClick={() => { }} sx={{ fontSize: { xs: "2.5em", sm: "2.5em", }, color: "#B01E28", }} />
+                return <FavoriteIcon 
+                            onClick={() => {
+                                
+                            }} 
+                            sx={{ 
+                                fontSize: { xs: "2.5em", sm: "2.5em", }, 
+                                color: "#B01E28", 
+                            }} 
+                        />
             case false:
-                return <NonFavoriteIcon onClick={() => { Favorite = !Favorite }} sx={{ fontSize: { xs: "2.5em", sm: "2.5em", }, color: "#B01E28", }} />
+                return <NonFavoriteIcon 
+                            onClick={() => { 
+                                isFavoriteMarket = !isFavoriteMarket 
+                            }} 
+                            sx={{ 
+                                fontSize: { xs: "2.5em", sm: "2.5em", }, 
+                                color: "#B01E28", 
+                            }} 
+                        />
             default:
         }
     }
@@ -113,7 +124,7 @@ const CvCard = (props) => {
 
     return (
         <>
-            <div className='w-full min-h-screen flex justify-center'>
+            <div className='w-full min-h-screen' data-testid="cardCv">
                 <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
                     {
                         (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
@@ -121,8 +132,19 @@ const CvCard = (props) => {
                                 <div className='w-[330px] md:w-96 h-fit p-2 mb-10 md:m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
                                     <div className='z-10'>
                                         {/* {setItemFav(marketplace.isFavorite)} */}
-                                        <div className='mt-[-20px] ml-[-20px] float-left flex flex-row '>{FavoriteDisplay(marketplace.isFavorite)}</div>
-                                        <div className='mt-[-20px] mr-[-20px] float-right flex flex-row '>{IconDisplay(marketplace.status)}</div>
+                                        <div className='mt-[-20px] ml-[-20px] float-left flex flex-row '>
+                                            {/* {FavoriteDisplay(marketplace.isFavorite, marketplace.id)} */}
+
+                                            <div onClick={()=>{
+                                                console.log("displatyee")
+                                            }}>
+                                                {FavoriteDisplay(marketplace.isFavorite, marketplace.id)}
+                                            </div>
+                                            
+                                        </div>
+                                        <div className='mt-[-20px] mr-[-20px] float-right flex flex-row '>
+                                            {IconDisplay(marketplace.status)}
+                                        </div>
 
                                     </div>
 
