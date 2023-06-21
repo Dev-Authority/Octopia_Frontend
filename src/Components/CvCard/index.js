@@ -1,8 +1,6 @@
 import { React, useEffect, useState } from 'react';
-//import { useSelector, useDispatch } from 'react-redux';
-// import { apiURL } from '../../Assets/util/api'
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-//import { MarketData } from '../../Redux/Reducers/RTKMarketplace'
 import CvDetailsModal from '../CVModal/CvDetailsModal';
 import LoadingRing from '../LoadingRing';
 import RejectedIcon from '@mui/icons-material/CancelRounded';
@@ -12,7 +10,10 @@ import NonFavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./style.css";
 import IconButton from '@mui/material/IconButton';
-import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import useLazyLoad from '../../Hooks/useLazyLoad';
+//import { useSelector, useDispatch } from 'react-redux';
+//import { MarketData } from '../../Redux/Reducers/RTKMarketplace'
 
 
 
@@ -27,13 +28,9 @@ const CvCard = (props) => {
     const [favoris, setFavoris] = useState();
 
     // const dispatch = useDispatch();
-
     // const MarketRTK = useSelector((state) => state.marketplacesRTK.value);
-
     // console.log("==========" + MarketRTK.name)
-
     // const SubscriptionRTK = useSelector((state) => state.SubscriptionRTK.value);
-
     // console.log("==========" + SubscriptionRTK.accountHolder)
 
     var canauxVente = [];
@@ -129,7 +126,7 @@ const CvCard = (props) => {
                     {
                         (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
                             marketplaces?.sort((a, b) => a.Score > b.Score ? -1 : 1).map((marketplace, index) => (
-                                <div className='w-[330px] md:w-96 h-fit p-2 mb-10 md:m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
+                                <div className='w-[330px] md:w-96 h-fit p-2 mb-10 md:m-10  bg-white rounded-xl transform transition-all hover:translate-y-[-1rem] hover:translate-x-[-1rem] duration-300 shadow-lg hover:shadow-2xl' key={index}>
                                     <div>
                                         {/* {setItemFav(marketplace.isFavorite)} */}
                                         {/* <div className='mt-[-20px] mr-[-20px] float-right flex flex-row '>
