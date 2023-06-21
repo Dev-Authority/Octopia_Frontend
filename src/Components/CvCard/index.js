@@ -10,7 +10,9 @@ import ApprovedIcon from '@mui/icons-material/CheckCircleRounded';
 import PendingIcon from '@mui/icons-material/AccessTimeFilledRounded';
 import NonFavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import "./style.css";
 import IconButton from '@mui/material/IconButton';
+import { Link } from 'react-router-dom';
 
 
 
@@ -80,7 +82,6 @@ const CvCard = (props) => {
                 return <RejectedIcon sx={{ fontSize: { xs: "2.5em", sm: "2.5em", }, color: "#c93543", }} />
             case "Pending":
                 return <PendingIcon sx={{ fontSize: { xs: "2.5em", sm: "2.5em", }, color: "rgb(28,120,182)", }} />
-            default:
         }
     }
 
@@ -88,32 +89,31 @@ const CvCard = (props) => {
         setItemFav(!itemFav);
     }
     // dispatch(MarketData({ name:"mehdi1" }));
-    const FavoriteDisplay = (isFavoriteMarket , marketId) => {
+    const FavoriteDisplay = (isFavoriteMarket, marketId) => {
         switch (isFavoriteMarket) {
             case true:
-                return <FavoriteIcon 
-                            onClick={() => {
-                                
-                            }} 
-                            sx={{ 
-                                fontSize: { xs: "2.5em", sm: "2.5em", }, 
-                                color: "#B01E28", 
-                            }} 
-                        />
+                return <FavoriteIcon
+                    onClick={() => {
+
+                    }}
+                    sx={{
+                        fontSize: { xs: "2.5em", sm: "2.5em", },
+                        color: "#B01E28",
+                    }}
+                />
             case false:
-                return <NonFavoriteIcon 
-                            onClick={() => { 
-                                isFavoriteMarket = !isFavoriteMarket 
-                            }} 
-                            sx={{ 
-                                fontSize: { xs: "2.5em", sm: "2.5em", }, 
-                                color: "#B01E28", 
-                            }} 
-                        />
+                return <NonFavoriteIcon
+                    onClick={() => {
+                        isFavoriteMarket = !isFavoriteMarket
+                    }}
+                    sx={{
+                        fontSize: { xs: "2.5em", sm: "2.5em", },
+                        color: "#B01E28",
+                    }}
+                />
             default:
         }
     }
-
 
 
     useEffect(() => {
@@ -124,32 +124,26 @@ const CvCard = (props) => {
 
     return (
         <>
-            <div className='w-full min-h-screen' data-testid="cardCv">
+            <div className='w-full flex justify-center' data-testid="cardCv">
                 <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
                     {
                         (isLoading && !error) ? <LoadingRing style={{ marginLeft: "50%", marginTop: "30px" }} /> :
                             marketplaces?.sort((a, b) => a.Score > b.Score ? -1 : 1).map((marketplace, index) => (
                                 <div className='w-[330px] md:w-96 h-fit p-2 mb-10 md:m-10  bg-white rounded-xl transform transition-all hover:translate-y-4 duration-300 shadow-lg hover:shadow-2xl' key={index}>
-                                    <div className='z-10'>
+                                    <div>
                                         {/* {setItemFav(marketplace.isFavorite)} */}
-                                        <div className='mt-[-20px] ml-[-20px] float-left flex flex-row '>
-                                            {/* {FavoriteDisplay(marketplace.isFavorite, marketplace.id)} */}
-
-                                            <div onClick={()=>{
-                                                console.log("displatyee")
-                                            }}>
-                                                {FavoriteDisplay(marketplace.isFavorite, marketplace.id)}
-                                            </div>
-                                            
-                                        </div>
-                                        <div className='mt-[-20px] mr-[-20px] float-right flex flex-row '>
-                                            {IconDisplay(marketplace.status)}
-                                        </div>
+                                        {/* <div className='mt-[-20px] mr-[-20px] float-right flex flex-row '>
+                                            {IconDisplay(marketplace.status)} 
+                                        </div> */}
 
                                     </div>
 
-                                    <div className='h-40'>
-                                        <a href={marketplace.Link} target="_blank" rel="noreferrer">
+                                    <div className='h-48'>
+
+                                        <div className='premier_plan mt-[10px] ml-[-20px] float-right flex flex-row '>
+                                            {FavoriteDisplay(marketplace.isFavorite, marketplace.id)}
+                                        </div>
+                                        <a href={marketplace.Link} className='deuxieme_plan' target="_blank" rel="noreferrer">
                                             <img
                                                 className='w-96 p-4 align-middle object-cover rounded-xl z-0'
                                                 alt="logo"
@@ -157,17 +151,24 @@ const CvCard = (props) => {
                                         </a>
                                     </div>
 
-                                    <div className='p-2'>
-                                        <p className='text-sm text-600'>{marketplace.Description}</p>
+                                    <div className='p-4'>
+                                        <p className='textOverflow'>{marketplace.Description}</p>
                                     </div>
                                     <div className='m-2'>
-                                        <button className='text-white bg-primaryLight px-3 py-1 rounded-md hover:bg-primaryDark'
+                                        <button className='h-12 w-full text-white bg-primaryLight px-3 py-1 rounded-md hover:bg-primaryDark'
                                             onClick={() => {
                                                 setShowDetailModal(true);
                                                 setCVIndex(marketplace.id);
                                             }}>
                                             Learn More
                                         </button>
+                                    </div>
+                                    <div className='m-2'>
+                                        <Link to={"/enroll"} state={marketplace}>
+                                            <button className='h-12 w-full text-white bg-secondPrimaryLight px-3 py-1 rounded-md hover:bg-primaryDark'>
+                                                Enroll Now
+                                            </button>
+                                        </Link>
                                     </div>
 
                                 </div>

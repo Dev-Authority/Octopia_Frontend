@@ -19,9 +19,9 @@ const MaterialTabs = () => {
 
 
     return (
-        <>
-            <Tabs value="All Marketplaces" className="mt-4 2xl:ml-12" data-testid="TabsforTest">
-                <TabsHeader className="w-5/12 deuxieme_plan">
+        
+            <Tabs value={data[0]} className="mt-4 2xl:ml-12" data-testid="TabsforTest">
+                <TabsHeader className="w-full xl:w-6/12 deuxieme_plan flex justify-center">
                     {data.map((label, index) => (
                         <Tab key={index} value={label}>
                             {label}
@@ -41,7 +41,7 @@ const MaterialTabs = () => {
                     ))}
                 </TabsBody>
             </Tabs>
-        </>
+        
     );
 };
 

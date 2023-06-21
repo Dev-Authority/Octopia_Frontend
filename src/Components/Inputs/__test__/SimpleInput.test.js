@@ -22,13 +22,14 @@ describe('SimpleInput', () => {
   
       const importInput = screen.queryByTestId('InputSimple');
       // Assert that the input element is rendered
-      expect(inputElement);
+      expect(inputElement).not.tobenull;
   
       // Simulate a change event on the input element
       fireEvent.change(inputElement, { target: { value: 'Test Input' } });
   
       // Assert that the handleData function is called with the correct arguments
       expect(props.handleData).toHaveBeenCalledWith('Test Input', 'testDataName');
+      expect(importInput).not.tobenull;
     });
   
     // Add more tests for other scenarios, such as input validation, error handling, etc.

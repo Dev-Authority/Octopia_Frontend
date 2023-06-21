@@ -1,0 +1,19 @@
+.textOverflow {
+    display: -webkit-box;
+  -webkit-line-clamp: 4; /* Number of lines to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 80px; /* Assuming 20px per line */
+  font-size: 16px;
+  line-height: 20px;
+  }
+
+.premier_plan{
+    position:relative;
+    z-index: 10;
+}
+.deuxieme_plan{
+    position:relative;
+    z-index: 1;
+}

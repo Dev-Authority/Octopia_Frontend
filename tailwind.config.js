@@ -25,6 +25,7 @@ module.exports = withMT({
       colors: {
         'primaryDark': 'rgb(2,41,64)',
         'primaryLight': 'rgb(28,120,182)',
+        'secondPrimaryLight': '#31b5ee',
         'Octopia_Blue':'#001944',
         'Octopia_Button': '#0041ff',
         'Octopia_Link': '#0037de',
