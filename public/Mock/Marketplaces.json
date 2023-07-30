@@ -111,6 +111,70 @@
             "status": "none",
             "isFavorite": true,
             "Score":4.5
+        },
+        {
+            "id":"63f381cda8015be280837abd",
+            "Name": "Bebeboutik",
+            "Slogan": "Leader in childcare, toys, clothing and home furnishings, from 0 to 12",
+            "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i0000014XC0&oid=00D58000000dZI5&lastMod=1682410919000",
+            "Link": "https://www.bebeboutik.fr/",
+            "Description": "Bebeboutik Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+            "Features": [
+                "Over 4 million members and 800+ brands",
+                "One year free membership",
+                "Country: France (FR), Europe (EU)"
+            ],
+            "status": "none",
+            "isFavorite": false,
+            "Score":3.9
+        },
+        {
+            "id":"63f381cda8015be280837abe",
+            "Name": "Fyndiq",
+            "Slogan": "Start selling on Fyndiq and reach millions of Nordic customers !",
+            "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i0000014XCP&oid=00D58000000dZI5&lastMod=1682403692000",
+            "Link": "https://fyndiq.se/",
+            "Description": "Fyndiq Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Fyndiq Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+            "Features": [
+                "Biggest Bargain Marketplace in the Nordics",
+                "3 months free subscription",
+                "Country: Sweden (SE), Denmark (DK), Finland (FI), Norway (NO)"
+            ],
+            "status": "none",
+            "isFavorite": false,
+            "Score":2.5
+        },
+        {
+            "id":"63f381cda8015be280837abf",
+            "Name": "Joom",
+            "Slogan": "Join mobile Cross‑Border Marketplace with Millions of Customers",
+            "Logo": "https://cdiscount.file.force.com/servlet/servlet.ImageServer?id=0151i0000014XCU&oid=00D58000000dZI5&lastMod=1682408104000",
+            "Link": "https://www.joom.com/",
+            "Description": "Joom Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Joom simply Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+            "Features": [
+                "Over 28M monthly active users worldwide",
+                "Free registration, no subscription",
+                "Country: More than 190 countries availabl"
+            ],
+            "status": "none",
+            "isFavorite": true,
+            "Score":4.9
+        },
+        {
+            "id":"63f381cda8015be280837abg",
+            "Name": "Ramsay",
+            "Slogan": "The health marketplace of France's leading private health care provider",
+            "Logo": "https://hopital-prive-la-louviere-lille.ramsaysante.fr/sites/default/files/biblio/domaines/hopital_prive_villeneuve_d_ascq/logo-ramsay_sante-pole_lille_metropole-bleu-bd_e74bc588344602db.png",
+            "Link": "https://www.ramsaysante.fr/",
+            "Description": "Ramsay Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+            "Features": [
+                "More than one and a half million digital patients",
+                "Attractive commission rates",
+                "Country: France (FR)"
+            ],
+            "status": "none",
+            "isFavorite": false,
+            "Score":3.7
         }
     ]
 }

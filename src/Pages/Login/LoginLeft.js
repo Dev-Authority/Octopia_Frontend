@@ -4,6 +4,7 @@ import i18next from 'i18next';
 import "../../Hooks/i18next"
 import Octopia from '../../Assets/images/OctopiaBlue.png';
 import { Select } from "antd";
+import { Link } from 'react-router-dom';
 
 
 
@@ -59,7 +60,9 @@ const LoginLeft = () => {
             <input type="checkbox" onClick={togglePassword} />
             <span>{t("showPassword")}</span>
           </div>
+          <Link to={"/marketplace"}>
           <button className='Login_btn'>{t("login")}</button>
+          </Link>
         </div>
       </div>
       <div className='px-20 inset-x-0 bottom-0 m-auto'>

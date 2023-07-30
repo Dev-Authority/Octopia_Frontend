@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Select, Input, Button, Upload } from 'antd';
+import { message , Button, Upload } from 'antd';
 import DocumentValidation from "../Validation/DocumentValidation"
 
 const Documents = (props) => {
@@ -11,21 +11,46 @@ const Documents = (props) => {
     });
   const [error, setError] = useState([]);
   const [fileState, setFileState] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   const handleData = (data, dataName) => {
     setSelectedData({ ...selectedData, [dataName]: data });
     console.log(selectedData);
   }
 
+  
+
   const handleValidation = () => {
+    setClicked(true);
     setError(DocumentValidation(selectedData));
+    popUpErrors()
     if (error.bankDetailsFile === "" && error.commercialRegisterFile === "") { 
       props.handleClick("next"); 
     }
   }
 
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const popUpErrors = () => {
+    messageApi
+      .open({
+        type: 'loading',
+        content: "loading",
+        duration: 1.5,
+      })
+      .then(() => error.bankDetailsFile ? message.error(error.bankDetailsFile, 1) : null)
+      .then(() => error.commercialRegisterFile ? message.error(error.commercialRegisterFile, 1) : null);
+  };
+
+  useEffect(() => {
+    if (clicked) {
+      setError(DocumentValidation(selectedData));
+    }
+  });
+
   return (
     <>
+    {contextHolder}
       <div className='px-0 md:px-20 '>
 
         <>

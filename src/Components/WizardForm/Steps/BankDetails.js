@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Select, Input, Button, Upload, Form, message } from 'antd';
+import {  Button, Upload, message } from 'antd';
 import { BanksNames, Countries } from '../../../Constants/Banks';
 import BankValidation from '../Validation/BankValidation'
 import SelectInput from '../../Inputs/SelectInput';
@@ -24,6 +24,7 @@ const BankDetails = (props) => {
     });
   const [error, setError] = useState([]);
   const [fileState, setFileState] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   const handleData = (data, dataName) => {
     setSelectedData({ ...selectedData, [dataName]: data });
@@ -41,8 +42,9 @@ const BankDetails = (props) => {
   // }
 
   const handleValidation = () => {
+    setClicked(true);
     setError(BankValidation(selectedData));
-    popUpErrors();
+    popUpErrors()
     if (error.bankName === "" && error.accountHolder === "" && error.country === "" && error.streetAdress === "" && error.postalCode === "" && error.city === "" && error.IBAN === "" && error.SWIFT === "" && error.bankDetailsFile === "") { 
       props.handleClick("next"); 
     }
@@ -71,6 +73,11 @@ const BankDetails = (props) => {
 
   console.log(error)
 
+  useEffect(() => {
+    if (clicked) {
+      setError(BankValidation(selectedData));
+    }
+  });
 
   return (
     <>
@@ -183,9 +190,7 @@ const BankDetails = (props) => {
           </button>
 
           <button
-            onClick={() => {
-              handleValidation();
-            }}
+            onClick={handleValidation}
             className="cursor-pointer rounded-lg bg-green-500 py-2 px-4 font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-slate-700 hover:text-white"
           >
             {props.currentStep === props.steps.length - 1 ? "Confirm" : "Next"}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Select, Input, Button, Upload } from 'antd';
+import { message, Button, Upload } from 'antd';
 import StoreValidation from '../Validation/StoreValidation'
 
 const OnlineStore = (props) => {
@@ -11,6 +11,7 @@ const OnlineStore = (props) => {
     });
   const [error, setError] = useState([]);
   const [fileState, setFileState] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   const handleData = (data, dataName) => {
     setSelectedData({ ...selectedData, [dataName]: data });
@@ -18,14 +19,37 @@ const OnlineStore = (props) => {
   }
 
   const handleValidation = () => {
+    setClicked(true);
     setError(StoreValidation(selectedData));
+    popUpErrors()
     if (error.storeLogoFile === "" && error.storeBannerFile === "") { 
       props.handleClick("next"); 
     }
   }
 
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const popUpErrors = () => {
+    messageApi
+      .open({
+        type: 'loading',
+        content: "loading",
+        duration: 2,
+      })
+      .then(() => error.storeLogoFile ? message.error(error.storeLogoFile, 1) : null)
+      .then(() => error.storeBannerFile ? message.error(error.storeBannerFile, 1) : null);
+  };
+
+  useEffect(() => {
+    if (clicked) {
+      setError(StoreValidation(selectedData));
+    }
+  });
+
+
   return (
     <>
+    {contextHolder}
       <div className='px-0 md:px-20 '>
 
         <>
